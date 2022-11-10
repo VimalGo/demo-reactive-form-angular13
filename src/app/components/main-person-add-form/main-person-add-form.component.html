@@ -1,0 +1,381 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Add New Main Person Detail</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="contactDetailForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="firstName"> First Name </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  formControlName="firstName"
+                  class="form-control"
+                  placeholder="First Name"
+                />
+                <span
+                  *ngIf="
+                    !contactDetailForm.get('firstName').valid &&
+                    contactDetailForm.get('firstName').touched
+                  "
+                  class="text-danger"
+                  >Please enter a valid First Name!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="middleName"> Middle Name </label>
+                <input
+                  type="text"
+                  id="middleName"
+                  formControlName="middleName"
+                  class="form-control"
+                  placeholder="Middle Name"
+                />
+                <span
+                  *ngIf="
+                    !contactDetailForm.get('middleName').valid &&
+                    contactDetailForm.get('middleName').touched
+                  "
+                  class="text-danger"
+                  >Please enter a valid Middle Name!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="surName"> Last Name </label>
+                <select
+                  id="surName"
+                  formControlName="surName"
+                  class="form-control"
+                >
+                  <option [ngValue]="null">-- Select --</option>
+                  <option
+                    style="background-color: darkcyan"
+                    *ngFor="let sn of surNameList"
+                    [ngValue]="sn"
+                  >
+                    {{ sn.surName }}
+                  </option>
+                </select>
+
+                <span
+                  class="text-danger"
+                  *ngIf="surName.touched && surName?.invalid"
+                  >Please select Last Name</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="relation"> Relation </label>
+                <select
+                  id="relation"
+                  formControlName="relation"
+                  class="form-control"
+                >
+                  <option [ngValue]="null">-- Select --</option>
+                  <option
+                    style="background-color: darkcyan"
+                    *ngFor="let r of relationList"
+                    [ngValue]="r"
+                  >
+                    {{ r.relationName }}
+                  </option>
+                </select>
+                <span
+                  class="text-danger"
+                  *ngIf="relation.touched && relation?.invalid"
+                  >Please select Relation</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="gender"> Gender </label>
+                <div *ngFor="let gender of genderEnumArray">
+                  <label>
+                    <input
+                      type="radio"
+                      [value]="gender"
+                      formControlName="gender"
+                    />{{ gender }}
+                  </label>
+                </div>
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    contactDetailForm.get('gender').touched &&
+                    contactDetailForm.get('gender')?.invalid
+                  "
+                  >Please select Gender</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="mobileNo"> Mobile No </label>
+                <input
+                  type="text"
+                  id="mobileNo"
+                  formControlName="mobileNo"
+                  class="form-control"
+                  placeholder="Mobile No"
+                />
+                <span
+                  *ngIf="
+                    !contactDetailForm.get('mobileNo').valid &&
+                    contactDetailForm.get('mobileNo').touched
+                  "
+                  class="text-danger"
+                  >Please enter a valid Mobile No!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="email"> Email Id </label>
+                <input
+                  type="text"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="Email Id"
+                />
+                <span
+                  *ngIf="
+                    !contactDetailForm.get('email').valid &&
+                    contactDetailForm.get('email').touched
+                  "
+                  class="text-danger"
+                  >Please enter a valid Email Id!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="dob"> DOB </label>
+                <input
+                  type="date"
+                  id="dob"
+                  formControlName="dob"
+                  class="form-control"
+                  placeholder="Date Of Birth"
+                />
+                <span
+                  *ngIf="
+                    !contactDetailForm.get('dob').valid &&
+                    contactDetailForm.get('dob').touched
+                  "
+                  class="text-danger"
+                  >Please enter a valid DOB!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="address1"> Address1 </label>
+                <input
+                  type="text"
+                  id="address1"
+                  formControlName="address1"
+                  class="form-control"
+                  placeholder="Address1"
+                />
+                <span
+                  *ngIf="
+                    !contactDetailForm.get('address1').valid &&
+                    contactDetailForm.get('address1').touched
+                  "
+                  class="text-danger"
+                  >Please enter a valid Address1!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="address2"> Address2 </label>
+                <input
+                  type="text"
+                  id="address2"
+                  formControlName="address2"
+                  class="form-control"
+                  placeholder="Address2"
+                />
+                <span
+                  *ngIf="
+                    !contactDetailForm.get('address2').valid &&
+                    contactDetailForm.get('address2').touched
+                  "
+                  class="text-danger"
+                  >Please enter a valid Address2!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="area"> Area </label>
+                <input
+                  type="text"
+                  id="area"
+                  formControlName="area"
+                  class="form-control"
+                  placeholder="Area"
+                />
+                <span
+                  *ngIf="
+                    !contactDetailForm.get('area').valid &&
+                    contactDetailForm.get('area').touched
+                  "
+                  class="text-danger"
+                  >Please enter a valid Area!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="pincode"> Pincode </label>
+                <input
+                  type="text"
+                  id="pincode"
+                  formControlName="pincode"
+                  class="form-control"
+                  placeholder="Pincode"
+                />
+                <span
+                  *ngIf="
+                    !contactDetailForm.get('pincode').valid &&
+                    contactDetailForm.get('pincode').touched
+                  "
+                  class="text-danger"
+                  >Please enter a valid Pincode!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="city"> City </label>
+                <select
+                  id="city"
+                  formControlName="city"
+                  (change)="onCityChange()"
+                  class="form-control"
+                >
+                  <option [ngValue]="null">-- Select --</option>
+                  <option
+                    style="background-color: darkcyan"
+                    *ngFor="let c of cityList"
+                    [ngValue]="c"
+                  >
+                    {{ c.cityName }}
+                  </option>
+                </select>
+                <span class="text-danger" *ngIf="city.touched && city?.invalid"
+                  >Please select City</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="state"> State </label>
+                <select id="state" formControlName="state" class="form-control">
+                  <option [ngValue]="null">-- Select --</option>
+                  <option
+                    style="background-color: darkcyan"
+                    *ngFor="let s of stateList"
+                    [ngValue]="s"
+                  >
+                    {{ s.stateName }}
+                  </option>
+                </select>
+                <span
+                  class="text-danger"
+                  *ngIf="state.touched && state?.invalid"
+                  >Please select State</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="country"> Country </label>
+                <select
+                  id="country"
+                  formControlName="country"
+                  class="form-control"
+                >
+                  <option [ngValue]="null">-- Select --</option>
+                  <option
+                    style="background-color: darkcyan"
+                    *ngFor="let co of countryList"
+                    [ngValue]="co"
+                  >
+                    {{ co.countryName }}
+                  </option>
+                </select>
+                <span
+                  class="text-danger"
+                  *ngIf="country.touched && country?.invalid"
+                  >Please select Country</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button
+              class="btn btn-fill btn-danger"
+              type="submit"
+              [disabled]="!contactDetailForm.valid"
+            >
+              Save
+            </button>
+            <button
+              class="btn btn-fill btn-danger"
+              type="button"
+              (click)="redirectToList()"
+            >
+              Close
+            </button>
+          </div>
+
+          <span *ngIf="!contactDetailForm.valid && contactDetailForm.touched"
+            >Please enter valid data!</span
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
